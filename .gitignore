@@ -11,7 +11,8 @@ tmp/
 test_output.wav
 
 # AI Models (Exclude large binaries - will be downloaded by setup scripts)
-models/
+models/**
+!models/wani/
 !models/wani/layers/
 !models/wani/layers/*.png
 !models/wani/bone_config.json
