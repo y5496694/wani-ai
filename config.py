@@ -15,7 +15,7 @@ ASSETS_DIR = BASE_DIR / "assets"
 LIVE2D_MODEL_DIR = MODELS_DIR / "wani"
 WHISPER_DIR = BASE_DIR / "whisper.cpp"
 WHISPER_MODEL = WHISPER_DIR / "models" / "ggml-tiny.bin"
-WHISPER_BIN = WHISPER_DIR / "build" / "bin" / "main"
+WHISPER_BIN = WHISPER_DIR / "build" / "bin" / "whisper-cli"
 TMP_DIR = Path("/tmp/wani-ai")
 TMP_DIR.mkdir(parents=True, exist_ok=True)
 
