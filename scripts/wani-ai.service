@@ -1,0 +1,25 @@
+[Unit]
+Description=Wani Virtual AI Assistant
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/wani-ai
+Environment=DISPLAY=:0
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+Environment=OLLAMA_NUM_PARALLEL=1
+Environment=OLLAMA_MAX_LOADED_MODELS=1
+ExecStartPre=/bin/sleep 5
+ExecStart=/home/pi/wani-ai/venv/bin/python /home/pi/wani-ai/main.py
+Restart=always
+RestartSec=10
+
+# 리소스 제한
+MemoryMax=6G
+CPUQuota=90%
+
+[Install]
+WantedBy=multi-user.target

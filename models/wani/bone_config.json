@@ -1,0 +1,230 @@
+{
+  "_comment": "와니 AI 스켈레탈 설정 (스크린 중앙 정렬판)",
+  "root": "root",
+  "display": {
+    "scale": 0.65,
+    "offsetX": 400,
+    "offsetY": 350
+  },
+  "bones": [
+    {
+      "name": "root",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "body",
+      "parent": "root",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "arm_L",
+      "parent": "body",
+      "x": 0,
+      "y": 0,
+      "angle": 0
+    },
+    {
+      "name": "arm_R",
+      "parent": "body",
+      "x": 0,
+      "y": 0,
+      "angle": 0
+    },
+    {
+      "name": "head",
+      "parent": "body",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "eye",
+      "parent": "head",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "eyelid",
+      "parent": "head",
+      "x": 0,
+      "y": 15
+    },
+    {
+      "name": "mouth",
+      "parent": "head",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "name": "hair",
+      "parent": "head",
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "layers": [
+    {
+      "name": "back_hair",
+      "image": "back hair.png",
+      "bone": "head",
+      "zOrder": -10
+    },
+    {
+      "name": "tail",
+      "image": "tail.png",
+      "bone": "tail",
+      "zOrder": 0
+    },
+    {
+      "name": "legwear",
+      "image": "legwear.png",
+      "bone": "body",
+      "zOrder": 1
+    },
+    {
+      "name": "footwear",
+      "image": "footwear.png",
+      "bone": "body",
+      "zOrder": 2
+    },
+    {
+      "name": "neck",
+      "image": "neck.png",
+      "bone": "body",
+      "zOrder": 9
+    },
+    {
+      "name": "bottomwear",
+      "image": "bottomwear.png",
+      "bone": "body",
+      "zOrder": 4
+    },
+    {
+      "name": "topwear",
+      "image": "topwear.png",
+      "bone": "body",
+      "zOrder": 5
+    },
+    {
+      "name": "arm_L",
+      "image": "left hand.png",
+      "bone": "arm_L",
+      "zOrder": -5
+    },
+    {
+      "name": "arm_R",
+      "image": "right hand.png",
+      "bone": "arm_R",
+      "zOrder": -5
+    },
+    {
+      "name": "headwear",
+      "image": "headwear.png",
+      "bone": "head",
+      "zOrder": 8
+    },
+    {
+      "name": "face",
+      "image": "face.png",
+      "bone": "head",
+      "zOrder": 10
+    },
+    {
+      "name": "ears",
+      "image": "ears.png",
+      "bone": "head",
+      "zOrder": 11
+    },
+    {
+      "name": "eyewhite",
+      "image": "eyewhite.png",
+      "bone": "head",
+      "zOrder": 12
+    },
+    {
+      "name": "irides",
+      "image": "irides.png",
+      "bone": "eye",
+      "zOrder": 13
+    },
+    {
+      "name": "eyelash",
+      "image": "eyelash.png",
+      "bone": "eyelid",
+      "zOrder": 14
+    },
+    {
+      "name": "mouth",
+      "image": "mouth.png",
+      "bone": "mouth",
+      "zOrder": 15
+    },
+    {
+      "name": "brow",
+      "image": "eyebrow.png",
+      "bone": "head",
+      "zOrder": 16
+    },
+    {
+      "name": "front_hair",
+      "image": "front hair.png",
+      "bone": "hair",
+      "zOrder": 20
+    }
+  ],
+  "drivers": [
+    {
+      "param": "ParamBreath",
+      "bone": "body",
+      "property": "y",
+      "scale": -4.0
+    },
+    {
+      "param": "ParamTailSwing",
+      "bone": "tail",
+      "property": "angle",
+      "scale": -8.0
+    },
+    {
+      "param": "ParamEyeBallX",
+      "bone": "eye",
+      "property": "x",
+      "scale": 8.0
+    },
+    {
+      "param": "ParamMouthOpenY",
+      "bone": "mouth",
+      "property": "y",
+      "scale": 4.0
+    },
+    {
+      "param": "ParamEyeLOpen",
+      "bone": "eyelid",
+      "property": "y",
+      "scale": -15.0
+    }
+  ],
+  "physics": [
+    {
+      "bone": "hair",
+      "property": "y",
+      "damping": 0.85,
+      "stiffness": 0.2,
+      "input": "ParamBreath"
+    },
+    {
+      "bone": "tail",
+      "property": "angle",
+      "damping": 0.8,
+      "stiffness": 0.1,
+      "input": "ParamTailSwing"
+    }
+  ]
+}
