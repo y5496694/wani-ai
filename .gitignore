@@ -11,9 +11,11 @@ tmp/
 test_output.wav
 
 # AI Models (Exclude large binaries - will be downloaded by setup scripts)
-models/wani/*.moc3
-models/wani/*.model3.json
-models/wani/textures/
+models/
+!models/wani/layers/
+!models/wani/layers/*.png
+!models/wani/bone_config.json
+!models/wani/README.txt
 models/supertonic/assets/
 whisper.cpp/models/*.bin
 whisper.cpp/main
