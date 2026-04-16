@@ -159,3 +159,33 @@ class TTSEngine:
     @property
     def is_ready(self) -> bool:
         return self._initialized
+
+
+class TTSEngineDummy:
+    """Supertone 초기화 실패 시 사용하는 기본 espeak 폴백 엔진"""
+    def __init__(self):
+        logger.info("더미 TTS 엔진 생성 (espeak-ng 사용)")
+
+    def synthesize(self, text: str, output_path: str | None = None) -> str:
+        import os
+        if output_path is None:
+            output_path = str(TTS_OUTPUT_FILE)
+        
+        # espeak-ng를 사용하여 단순 합성
+        os.system(f"espeak-ng -v ko -s 150 -w {output_path} \"{text}\"")
+        return output_path
+
+    def synthesize_sentences(self, sentences: list[str]) -> list[str]:
+        output_files = []
+        for i, s in enumerate(sentences):
+            path = str(TMP_DIR / f"wani_tts_{i:03d}.wav")
+            self.synthesize(s, path)
+            output_files.append(path)
+        return output_files
+
+    def cleanup_temp_files(self):
+        try:
+            for f in TMP_DIR.glob("wani_tts_*.wav"):
+                os.remove(f)
+        except Exception:
+            pass

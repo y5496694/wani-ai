@@ -64,11 +64,11 @@ class WaniAssistant:
         self.audio = AudioManager()
         self.stt = STTEngine()
 
-        # TTS 초기화 (MeloTTS 실패 시 espeak 폴백)
+        # TTS 초기화 (Supertonic 실패 시 espeak 폴백)
         try:
             self.tts = TTSEngine()
         except Exception:
-            logger.warning("MeloTTS 초기화 실패, espeak-ng 폴백으로 전환")
+            logger.warning("Supertonic TTS 초기화 실패, espeak-ng 폴백으로 전환")
             self.tts = TTSEngineDummy()
 
         self.llm = LLMEngine()
