@@ -15,7 +15,7 @@
 ## 🏗️ 아키텍처
 
 ```
-[마이크] → [Whisper.cpp STT] → [Gemma4 E2B LLM] → [MeloTTS] → [스피커]
+[마이크] → [Whisper.cpp STT] → [Gemma4 E2B LLM] → [Supertonic TTS] → [스피커]
                                        ↓
                               [감정 태그 파싱]
                                        ↓
@@ -41,7 +41,7 @@
 - Python 3.11+
 - Ollama + Gemma4 E2B
 - Whisper.cpp
-- MeloTTS
+- Supertone Supertonic (ONNX)
 
 ## 🚀 설치
 
