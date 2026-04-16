@@ -46,8 +46,8 @@ class TTSEngine:
                     "scripts/setup_supertonic.sh를 먼저 실행해주세요."
                 )
 
-            # 엔진 초기화 (assets_path 지정)
-            self._engine = TTS(assets_path=str(SUPERTONIC_ASSETS_DIR))
+            # 엔진 초기화 (model_dir 지정)
+            self._engine = TTS(model_dir=str(SUPERTONIC_ASSETS_DIR))
             
             # 목소리 스타일 설정 (F2) - 에셋 폴더 내의 .json 파일을 로드
             style_path = SUPERTONIC_ASSETS_DIR / "voice_styles" / f"{SUPERTONIC_VOICE_STYLE}.json"
