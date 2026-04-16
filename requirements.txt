@@ -1,19 +1,13 @@
-# 와니 AI — Python 의존성
-# Raspberry Pi 5 (64-bit ARM) 환경용
-# 설치: pip install -r requirements.txt
-
-# ── LLM (Ollama API 통신) ──
+# Core
 requests>=2.31.0
-
-# ── 오디오 ──
 PyAudio>=0.2.14
+SpeechRecognition>=3.10.0
+audioop-lts>=0.2.0
 
-# ── TTS (Supertone Supertonic) ──
+# AI Models
 supertonic>=0.1.0
+onnxruntime>=1.14.0
 
-# ── Live2D 렌더링 ──
+# Graphics & UI
 pygame>=2.5.0
-# live2d-py  # pip로 설치 불가 — 별도 빌드 필요 (setup.sh 참조)
-
-# ── 유틸리티 ──
 numpy>=1.24.0

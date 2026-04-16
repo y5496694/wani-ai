@@ -37,7 +37,7 @@ class TTSEngine:
             start = time.time()
 
             # supertonic 라이브러리 임포트
-            from supertonic import SupertonicTTS
+            from supertonic import TTS, Style
 
             # 에셋 경로 확인
             if not SUPERTONIC_ASSETS_DIR.exists():
@@ -46,9 +46,15 @@ class TTSEngine:
                     "scripts/setup_supertonic.sh를 먼저 실행해주세요."
                 )
 
-            # 엔진 초기화
-            # SUPERTONIC_ASSETS_DIR 내부에 onnx 모델들이 있어야 함
-            self._engine = SupertonicTTS(model_dir=str(SUPERTONIC_ASSETS_DIR))
+            # 엔진 초기화 (assets_path 지정)
+            self._engine = TTS(assets_path=str(SUPERTONIC_ASSETS_DIR))
+            
+            # 목소리 스타일 설정 (F2) - 에셋 폴더 내의 .json 파일을 로드
+            style_path = SUPERTONIC_ASSETS_DIR / "voice_styles" / f"{SUPERTONIC_VOICE_STYLE}.json"
+            if not style_path.exists():
+                style_path = SUPERTONIC_ASSETS_DIR / f"{SUPERTONIC_VOICE_STYLE}.json"
+            
+            self._style = Style(str(style_path))
             
             self._initialized = True
             elapsed = time.time() - start
@@ -95,7 +101,7 @@ class TTSEngine:
             # 합성 수행
             audio = self._engine.synthesize(
                 text, 
-                voice_style=str(voice_path),
+                style=self._style,
                 speed=TTS_SPEED
             )
 
