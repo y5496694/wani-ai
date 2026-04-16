@@ -68,8 +68,14 @@ if [ ! -d "$WANI_DIR/whisper.cpp" ]; then
     git clone https://github.com/ggerganov/whisper.cpp "$WANI_DIR/whisper.cpp"
 fi
 cd "$WANI_DIR/whisper.cpp"
-make clean
-make -j$(nproc)
+# Whisper.cpp 빌드 (Makefile이 있는 경우에만 실행)
+if [ -f "Makefile" ]; then
+    echo "  Makefile을 통한 빌드 시도..."
+    make clean || true
+    make -j$(nproc)
+else
+    echo "  Makefile이 없습니다. 이미 빌드되었거나 CMake를 사용하는 것 같습니다."
+fi
 
 # 한국어 tiny 모델 다운로드
 if [ ! -f "$WANI_DIR/whisper.cpp/models/ggml-tiny.bin" ]; then
