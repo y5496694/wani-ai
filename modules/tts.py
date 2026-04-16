@@ -37,7 +37,7 @@ class TTSEngine:
             start = time.time()
 
             # supertonic 라이브러리 임포트
-            from supertonic import TTS, Style
+            from supertonic import TTS, loader
 
             # 에셋 경로 확인
             if not SUPERTONIC_ASSETS_DIR.exists():
@@ -49,12 +49,13 @@ class TTSEngine:
             # 엔진 초기화 (model_dir 지정)
             self._engine = TTS(model_dir=str(SUPERTONIC_ASSETS_DIR))
             
-            # 목소리 스타일 설정 (F2) - 에셋 폴더 내의 .json 파일을 로드
+            # 목소리 스타일 설정 (F2) - 전용 로더(loader) 사용
             style_path = SUPERTONIC_ASSETS_DIR / "voice_styles" / f"{SUPERTONIC_VOICE_STYLE}.json"
             if not style_path.exists():
                 style_path = SUPERTONIC_ASSETS_DIR / f"{SUPERTONIC_VOICE_STYLE}.json"
             
-            self._style = Style(str(style_path))
+            # loader.load_voice_style_from_json_file를 사용하여 Style 객체 생성
+            self._style = loader.load_voice_style_from_json_file(str(style_path))
             
             self._initialized = True
             elapsed = time.time() - start
